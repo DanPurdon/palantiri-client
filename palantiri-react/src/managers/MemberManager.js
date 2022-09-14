@@ -25,3 +25,14 @@ export const searchUsersByEmail = (email) => {
         .then(response => response.json())
 }
 
+export const createInvitation = (circlerId) => {
+    return fetch("http://localhost:8000/invitations", { 
+        method: "POST",
+        headers:{
+            "Authorization": `Token ${localStorage.getItem("palantiri_token")}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({"invitee": circlerId})
+    })
+        .then(response => response.json())
+}

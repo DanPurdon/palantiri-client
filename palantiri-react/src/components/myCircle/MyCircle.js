@@ -22,12 +22,15 @@ export const MyCircle = () => {
         </div>
         
         <article className="posts">
-            <h4>Circle Posts</h4>
+            <h4>Circle Posts
+                <br></br><Link className="post__link" to="/post" state={{ circleName: myCircle.name }}>Create New Post</Link>
+            </h4>
             {
                 myCircle?.circle_posts?.map(post => {
                     return <section key={`post--${post.id}`} className="post">
                         <div className="post__date"><strong>{post.date_posted}</strong></div>
                         <div className="post__content">{post.content}</div>
+                        <Link className="details__link" to={`/mycircle/${post.id}`} state={{ circleName: myCircle.name }}>Details</Link>
                     </section>
                 })
             }
@@ -40,6 +43,7 @@ export const MyCircle = () => {
                     return <section key={`message--${message.id}`} className="message">
                         <div className="message__date"><strong>{message.date_sent}</strong></div>
                         <div className="message__content">{message.content}</div>
+                        <Link className="message__link" to={`/messages/${message.id}`} state={{ circleName: myCircle.name }}>Details</Link>
                     </section>
                 })
             }
