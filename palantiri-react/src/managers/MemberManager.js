@@ -36,3 +36,10 @@ export const createInvitation = (circlerId) => {
     })
         .then(response => response.json())
 }
+
+export const deleteMember = (memberId) => {
+    return fetch(`http://localhost:8000/members/${memberId}`, {
+        method: "DELETE",
+        headers: {"Authorization": `Token ${localStorage.getItem("palantiri_token")}`}
+    })
+}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { getMyMembership } from "../../managers/MemberManager.js"
+import { deleteMember, getMyMembership } from "../../managers/MemberManager.js"
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 
 
@@ -19,6 +19,14 @@ export const MyMembers = () => {
     const memberSum = myMembers.length
     const { circleName } = location?.state
 
+    const confirmDelete = (member) => {
+        let check = window.confirm("Are you sure you want to remove this member from your circle?")
+        if (check) {  
+        deleteMember(member)
+            .then(loadMembers)
+        } 
+    }
+
     return (
         <>
         <div className="main__header">
@@ -35,6 +43,10 @@ export const MyMembers = () => {
                         <div className="member__name"><strong>{member?.circler?.user?.first_name + " " + member?.circler?.user?.last_name}</strong></div>
                         <div className="member__content">{member?.circler?.user?.email}</div>
                         <div className="member__date_joined">Date Joined: {member?.date_joined}</div>
+                        <button className="button-55" onClick={() => {
+                                        confirmDelete(member.id)
+                                        }}
+                                    >Delete Member</button>
                     </section>
                 })
             }

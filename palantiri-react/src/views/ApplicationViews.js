@@ -10,7 +10,9 @@ import { Invite } from "../components/myCircle/Invite"
 import { Post } from "../components/myCircle/Post"
 import { PostDetails } from "../components/myCircle/PostDetails"
 import { MessageDetails } from "../components/myCircle/MessageDetails"
-import { OtherCircles } from "../components/otherCircles/otherCircles"
+import { OtherCircles } from "../components/otherCircles/OtherCircles"
+import { Profile } from "../components/profile/Profile"
+import { EditProfile } from "../components/profile/EditProfile"
 
 export const ApplicationViews = () => {
     const navigate = useNavigate()
@@ -27,9 +29,13 @@ export const ApplicationViews = () => {
                 <Route path="mycircle/:postId" element={<PostDetails/>} /> 
                 <Route path="messages/:messageId" element={<MessageDetails/>} /> 
 
+                <Route path="profile" element={<Profile />} />
+                <Route path="profile/edit" element={<EditProfile />} />
+                
                 <Route path="circles" element={<OtherCircles />} />
+                <Route path="circles/:circleId" element={<OtherCircles />} />
 
-                {/* <Route path="events/:eventId/edit" element={ <UpdateEvent /> } /> */}
+                
             </Route>
         </Routes>
     </>

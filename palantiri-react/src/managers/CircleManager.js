@@ -17,3 +17,13 @@ export const getOtherCircles = () => {
         .then(response => response.json())
 }
 
+export const editCircleName = (circleObject) => {
+    return fetch(`http://localhost:8000/circles/${circleObject.id}`, {
+        method: "PUT",
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("palantiri_token")}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(circleObject)
+    })
+}

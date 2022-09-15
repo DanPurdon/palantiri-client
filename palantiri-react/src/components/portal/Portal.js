@@ -8,12 +8,7 @@ export const Portal = () => {
             {
                 (localStorage.getItem("palantiri_token") !== null) ?
                     <li className="nav-item">
-                        <button className="nav-button"
-                            onClick={() => {
-                                localStorage.removeItem("palantiri_token")
-                                navigate('/login')
-                            }}
-                        >Logout</button>
+                        
                         <h1>Palantiri / Circles</h1>
                         <h2 className="main__links"><Link className="main__link" to="/mycircle" >mine</Link></h2>
                         <h2 className="main__links"><Link className="main__link" to="/circles" >others</Link></h2>

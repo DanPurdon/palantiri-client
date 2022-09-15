@@ -7,10 +7,14 @@ export const OtherCircles = () => {
     const [ otherCircles, setOtherCircles ] = useState({})
     const navigate = useNavigate()
     
-    
-    useEffect(() => {
+    const loadOtherCircles = () => {
         getOtherCircles().then(data => setOtherCircles(data))
+    }
+
+    useEffect(() => {
+        loadOtherCircles()
     }, [])
+    
     
     return (
         <>
@@ -20,17 +24,16 @@ export const OtherCircles = () => {
         </div>
         
         <article className="circles">
-            <h4>Circles I belong to:
-                {/* <br></br><Link className="post__link" to="/post" state={{ circleName: otherCircle.name }}>Create New Post</Link> */}
-            </h4>
+            <h4>Circles I belong to:</h4>
             {
-                otherCircles?.map(circle => {
+                otherCircles.length ?
+                otherCircles.map(circle => {
                     return <section key={`circle--${circle.id}`} className="circle">
-                        <div className="circle__name"><strong>{circle.name}</strong></div>
-                        <div className="circle__content">{circle.content}</div>
-                        {/* <Link className="details__link" to={`/othercircle/${post.id}`} state={{ circleName: otherCircle.name }}>Details</Link> */}
+                        <Link className="circle__link" to={`/circles/${circle.id}`}><strong>{circle.name}</strong></Link>
                     </section>
                 })
+                :
+                ""
             }
         </article>
 
