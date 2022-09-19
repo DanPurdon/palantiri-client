@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { getMyInvites, searchUsersByEmail, createInvitation } from "../../managers/MemberManager.js"
+import { getCircleInvites, searchUsersByEmail, createInvitation } from "../../managers/MemberManager.js"
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 
 
@@ -12,7 +12,7 @@ export const Invite = () => {
     const location = useLocation()
     
     const loadInvites = () => {
-        getMyInvites().then(data => setMyInvites(data))
+        getCircleInvites().then(data => setMyInvites(data))
     }
 
     useEffect(() => {

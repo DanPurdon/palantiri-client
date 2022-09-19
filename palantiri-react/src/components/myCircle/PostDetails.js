@@ -14,7 +14,7 @@ export const PostDetails = () => {
     useEffect(
         () => {
             getPost(postId)
-                .then((data) => {setPost(data[0])})
+                .then((data) => {setPost(data)})
         },
         [postId]
     )
@@ -29,13 +29,13 @@ export const PostDetails = () => {
             </h2>
         </div>
         <article className="post-details">
-        <h3>Post date: {post.date_posted}</h3>
+        <h3>Post date: {post?.post?.date_posted}</h3>
         <h3>Content:</h3>
-        <p>{post.content}</p>
+        <p>{post?.post?.content}</p>
         <h3>Comments:</h3>
-        {post?.comments?.length ? "" : "No comments yet!"}
+        {post?.post?.comments?.length ? "" : "No comments yet!"}
             {
-                post?.comments?.map(comment => {
+                post?.post?.comments?.map(comment => {
                     return <section key={`comment--${comment.id}`} className="comment">
                         <div className="comment__date"><strong>{comment.date_posted}</strong></div>
                         <div className="comment__content">{comment.content}</div>

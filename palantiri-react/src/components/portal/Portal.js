@@ -7,14 +7,13 @@ export const Portal = () => {
         <ul className="portal">
             {
                 (localStorage.getItem("palantiri_token") !== null) ?
-                    <li className="nav-item">
-                        
+                        <>
                         <h1>Palantiri / Circles</h1>
                         <h2 className="main__links"><Link className="main__link" to="/mycircle" >mine</Link></h2>
                         <h2 className="main__links"><Link className="main__link" to="/circles" >others</Link></h2>
                         <h2 className="main__links"><Link className="main__link" to="/profile" >profile</Link></h2>
-
-                    </li> :
+                        </>
+                    :
                     <>
                         <li className="nav-item">
                             <Link className="nav-link" to="/login">Login</Link>

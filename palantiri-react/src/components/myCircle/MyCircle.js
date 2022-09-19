@@ -21,6 +21,9 @@ export const MyCircle = () => {
             <h3><Link className="member__link" to="/mymembers" state={{ circleName: myCircle.name }}>Members: {memberNumbers}</Link></h3>
         </div>
         
+        {memberNumbers > 2 
+        ?
+        <>
         <article className="posts">
             <h4>Circle Posts
                 <br></br><Link className="post__link" to="/post" state={{ circleName: myCircle.name }}>Create New Post</Link>
@@ -43,11 +46,19 @@ export const MyCircle = () => {
                     return <section key={`message--${message.id}`} className="message">
                         <div className="message__date"><strong>{message.date_sent}</strong></div>
                         <div className="message__content">{message.content}</div>
-                        <Link className="message__link" to={`/messages/${message.id}`} state={{ circleName: myCircle.name }}>Details</Link>
+                        <Link className="message__link" to={`/mymessages/${message.id}`} state={{ circleName: myCircle?.name }}>Details</Link>
                     </section>
                 })
             }
         </article>
+        </>
+
+        :
+        <>
+        Circles must have a minimum of three members before activation. <br></br> 
+        <Link className="invite__link" to="/invite" state={{ circleName: myCircle?.name }}>Invite More Members</Link>
+        </>
+        }
         </>
     )
 }
