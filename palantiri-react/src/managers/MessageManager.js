@@ -19,3 +19,10 @@ export const createMessage = (message) => {
     })
         .then(response => response.json())
 }
+
+export const deleteMessage = (messageId) => {
+    return fetch(`http://localhost:8000/messages/${messageId}`, {
+        method: "DELETE",
+        headers: {"Authorization": `Token ${localStorage.getItem("palantiri_token")}`}
+    })
+}

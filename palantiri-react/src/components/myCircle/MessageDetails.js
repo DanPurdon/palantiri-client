@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { getMessage } from "../../managers/MessageManager.js"
+import { deleteMessage, getMessage } from "../../managers/MessageManager.js"
 import { Link, useNavigate, useLocation, useParams } from 'react-router-dom'
 
 
@@ -34,7 +34,11 @@ export const MessageDetails = () => {
         <p>{message.content}</p>
 
         </article>
-
+        <button className="button-55" onClick={() => {
+                                        deleteMessage(messageId)
+                                        .then(navigate("/mycircle"))
+                                        }}
+                                    >Delete Message</button>
         </>
     )
 }

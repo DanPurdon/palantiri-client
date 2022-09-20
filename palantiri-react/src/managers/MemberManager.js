@@ -71,3 +71,4 @@ export const deleteMember = (memberId) => {
         headers: {"Authorization": `Token ${localStorage.getItem("palantiri_token")}`}
     })
 }
+

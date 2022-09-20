@@ -37,3 +37,10 @@ export const editCircleName = (circleObject) => {
         body: JSON.stringify(circleObject)
     })
 }
+
+export const leaveCircle = (circleId) => {
+    return fetch(`http://localhost:8000/circles/${circleId}/leave`, {
+        method: "DELETE",
+        headers: {"Authorization": `Token ${localStorage.getItem("palantiri_token")}`}
+    })
+}

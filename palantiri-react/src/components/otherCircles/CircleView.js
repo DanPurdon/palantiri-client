@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react"
-import { getCircle } from "../../managers/CircleManager.js"
+import { getCircle, leaveCircle } from "../../managers/CircleManager.js"
 import { Link, useNavigate, useParams } from 'react-router-dom'
-
 
 export const CircleView = () => {
     const [ circle, setCircle ] = useState({})
     const navigate = useNavigate()
     const {circleId} = useParams()
+    
+    const confirmQuit = () => {
+        let check = window.confirm("Are you sure you want to leave this circle?")
+        if (check) {  
+        leaveCircle(circle?.circle?.id)
+            .then(navigate("/circles"))
+        } 
+    }
     
     useEffect(() => {
         getCircle(circleId).then(data => setCircle(data))
@@ -19,6 +26,10 @@ export const CircleView = () => {
         <h1>Palantiri</h1>
             <h2 className="main__subheader"><Link className="portal__link" to="/" >Circles</Link> / <Link 
             className="portal__link" to="/circles" >Other Circles</Link> / {circle?.circle?.name}</h2>
+            <button className="button-55" onClick={() => {
+                                        confirmQuit()
+                                        }}
+                                    >Leave Circle</button>
             <h3>Members: {memberNumbers}</h3>
         </div>
         

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { getCircleInvites, searchUsersByEmail, createInvitation } from "../../managers/MemberManager.js"
+import { getCircleInvites, searchUsersByEmail, createInvitation, deleteInvitation } from "../../managers/MemberManager.js"
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 
 
@@ -90,6 +90,11 @@ export const Invite = () => {
                     return <section key={`invite--${invite.id}`} className="invite">
                         <div className="invite__name"><strong>{invite?.circler?.user?.first_name + " " + invite?.circler?.user?.last_name}</strong></div>
                         <div className="invite__content">{invite?.circler?.user?.email}</div>
+                        <button className="button-55" onClick={() => {
+                                        deleteInvitation(invite.id)
+                                        .then(loadInvites)
+                                        }}
+                                    >Delete Invitation</button>
                     </section>
                 })
             }

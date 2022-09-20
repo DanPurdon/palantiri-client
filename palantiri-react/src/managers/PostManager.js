@@ -31,3 +31,9 @@ export const getPost = (postId) => {
         .then(response => response.json())
 }
 
+export const deletePost = (postId) => {
+    return fetch(`http://localhost:8000/posts/${postId}`, {
+        method: "DELETE",
+        headers: {"Authorization": `Token ${localStorage.getItem("palantiri_token")}`}
+    })
+}

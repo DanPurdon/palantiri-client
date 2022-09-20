@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { getPost } from "../../managers/PostManager.js"
+import { deletePost, getPost } from "../../managers/PostManager.js"
 import { Link, useNavigate, useLocation, useParams } from 'react-router-dom'
 
 
@@ -44,6 +44,12 @@ export const PostDetails = () => {
             }
 
         </article>
+
+        <button className="button-55" onClick={() => {
+                                        deletePost(postId)
+                                        .then(navigate("/mycircle"))
+                                        }}
+                                    >Delete Post</button>
 
         </>
     )

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { getOtherCircles } from "../../managers/CircleManager.js"
 import { Link, useNavigate } from 'react-router-dom'
-import { acceptInvitation, deleteInvitation, getMyInvites } from "../../managers/MemberManager.js"
+import { acceptInvitation, deleteInvitation, deleteMember, getMyInvites } from "../../managers/MemberManager.js"
 
 
 export const OtherCircles = () => {
@@ -21,6 +21,7 @@ export const OtherCircles = () => {
         loadOtherCircles()
         loadMyInvites()
     }, [])
+    
     
     
     return (
@@ -61,6 +62,10 @@ export const OtherCircles = () => {
                 otherCircles.map(circle => {
                     return <section key={`circle--${circle.id}`} className="circle">
                         <Link className="circle__link" to={`/circles/${circle.id}`}><strong>{circle.name}</strong></Link>
+                        {/* <button className="button-55" onClick={() => {
+                                        confirmDelete(member.id)
+                                        }}
+                                    >Leave Circle</button> */}
                     </section>
                 })
                 :

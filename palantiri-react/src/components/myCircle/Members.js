@@ -33,7 +33,7 @@ export const MyMembers = () => {
         <h1>Palantiri</h1>
             <h2 className="main__subheader"><Link className="portal__link" to="/" >Circles</Link> / <Link className="my_circle__link" to="/mycircle" >{circleName}</Link> / Members</h2>
         </div>
-        {memberSum < 4 ? <div><i>Your circle must have three members to be active! Still {3 - memberSum} more to go.</i></div> : ""}
+        {memberSum < 3 ? <div><i>Your circle must have three members to be active! Still {3 - memberSum} more to go.</i></div> : ""}
         <h3><Link className="invite__link" to="/invite" state={{ circleName: circleName }}>Invite Members</Link></h3>
         <article className="members">
             <h4>Active Members</h4>
